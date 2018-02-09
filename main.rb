@@ -25,3 +25,11 @@ end
 
 
 menu
+
+
+#git checkout   changes file, 
+#git add .
+#git commit
+
+#in vm type what the commit changes/does
+#press 'esc', type ':wq' to write, quit
