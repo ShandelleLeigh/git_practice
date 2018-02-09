@@ -1,30 +1,29 @@
 require 'colorize'
+require_relative 'git'
 
-def puts_git(cmd)
-    puts `git #{cmd} -h`
-end
-  
-def menu
-        puts 'Main Menu:' .colorize(:CYAN)
-        puts '1: Enter git command' .colorize(:CYAN)
-        puts '2: Exit'.colorize(:CYAN)
-        choice = gets.to_i
-case choice
-    when 1
+class Main
+  include Git
+
+  def menu
+    puts 'MAIN MENU'.colorize(:cyan)
+    puts '1: Enter git command'.colorize(:cyan)
+    puts '2: Exit'.colorize(:cyan)
+    choice = gets.to_i
+    case choice
+      when 1
         puts 'Enter git command'.colorize(:green)
         puts_git(gets.strip)
         menu
-    when 2
-    
-    else
-    puts 'Invalid choice'.colorize(:red)
-        
+      when 2
+        exit
+      else
+        puts 'Invalid choice'.colorize(:red)
+        menu
     end
+  end
 end
 
-
-
-menu
+Main.menu
 
 
 #git checkout   changes file, 
@@ -33,3 +32,8 @@ menu
 
 #in vm type what the commit changes/does
 #press 'esc', type ':wq' to write, quit
+
+#terminal: git checkout master (or other branch)
+#    git branch -d foo
+
+#git checkout -b my_feater      makes and switches to branch "my_feature" 
